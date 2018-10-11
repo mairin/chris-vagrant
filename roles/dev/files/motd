@@ -1,0 +1,9 @@
+Welcome to the ChRIS Store development environment.
+Here are some helpful commands:
+
+workon chris_web_env:	Starts the python venv for ChRIS store development.
+deactivate:		Deactive the python venv
+yarn build:		(In the ChRIS store UI repo) Builds web ui
+yarn run:		(In the ChRIS store UI repo) Runs web ui in devel mode
+./docker-make.sh	(In the ChRIS store repo) Starts containers
+./docker-destroy.sh	(In the ChRIS store repo) Shuts down containers

@@ -1,2 +1,2 @@
 # chris-vagrant
-Vagrant / ansible setup for ChRIS dev environment setup
+ChRIS setup via vagrant and ansible

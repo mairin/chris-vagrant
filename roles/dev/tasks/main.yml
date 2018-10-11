@@ -1,0 +1,161 @@
+---
+- name: Install the .bashrc
+  copy:
+      src: .bashrc
+      dest: /home/vagrant/.bashrc
+      mode: 0644
+      owner: vagrant
+      group: vagrant
+
+# Install needed packages
+- name: Install dev packages
+  dnf:
+      name:
+      - git
+      - docker
+      - docker-compose
+      - mysql
+      - mysql-server
+      - httpie
+      - python3-pip
+      - python-swiftclient
+      - python3-requests
+      - pytz
+      - python3-pytz
+      - python-swiftclient
+      - python3-coverage
+      - mod_wsgi
+      - python-pudb
+      - libcurl-devel
+      - openssl-devel
+      - gcc
+      state: present
+
+- name: pip install python-chrisstoreclient
+  pip:
+      name: python-chrisstoreclient
+      executable: pip3
+
+- name: pip install django-filter
+  pip:
+      name: django-filter
+      executable: pip3
+
+- name: pip install django-storage-swift
+  pip:
+      name: django-storage-swift
+      executable: pip3
+
+- name: pip install django-cors-middleware
+  pip:
+      name: django-cors-middleware
+      executable: pip3
+
+- name: pip install django-djangorestframework
+  pip:
+      name: djangorestframework
+      executable: pip3
+
+- name: pip install django-debug-toolbar
+  pip:
+      name: django-debug-toolbar
+      executable: pip3
+
+- name: pip install django-extensions
+  pip:
+      name: django-extensions
+      executable: pip3
+
+- name: pip install collection-json
+  pip:
+      name: collection-json
+      executable: pip3
+
+- name: pip install pfurl
+  pip:
+      name: pfurl
+      executable: pip3
+
+- name: pip install pfmisc
+  pip:
+      name: pfmisc
+      executable: pip3
+
+- name: pip install docker
+  pip:
+      name: docker
+      executable: pip3
+
+- name: pip install mod-wsgi-httpd
+  pip:
+      name: mod-wsgi-httpd
+      executable: pip3
+
+- name: Install the .vimrc
+  copy:
+      src: .vimrc
+      dest: /home/vagrant/.vimrc
+      mode: 0644
+      owner: vagrant
+      group: vagrant
+
+- name: Install the motd
+  copy:
+      src: motd
+      dest: /etc/motd
+      mode: 0644
+
+- name: Create directory for python env
+  file: 
+      path: /home/vagrant/Python_Envs 
+      state: directory
+      mode: 0755
+
+- name: Create directory for repos
+  file: 
+      path: /home/vagrant/Repositories 
+      state: directory
+      mode: 0755
+
+- name: Create directory for ChRIS_store
+  file: 
+      path: /home/vagrant/Repositories/ChRIS_store
+      state: directory
+      mode: 0755
+
+- name: Create directory for ChRIS_store_ui
+  file: 
+      path: /home/vagrant/Repositories/ChRIS_store_ui
+      state: directory
+      mode: 0755
+
+- name: Clone ChRIS Store repo
+  git:
+    repo: 'https://github.com/FNNDSC/ChRIS_store.git'
+    dest: /home/vagrant/Repositories/ChRIS_store
+    update: yes
+
+- name: Clone ChRIS Store UI repo
+  git:
+    repo: 'https://github.com/FNNDSC/ChRIS_store_ui.git'
+    dest: /home/vagrant/Repositories/ChRIS_store_ui
+    update: yes
+
+- name: Install python virtual environment
+  pip:
+    requirements: /home/vagrant/Repositories/ChRIS_store/requirements/local.txt
+    virtualenv: /home/vagrant/Python_Envs
+
+- name: Make python venv using command module
+  command: mkvirtualenv --python=python3 chris_store_env
+  args:
+    chdir: /home/vagrant/Python_Envs
+
+- name: Source .bashrc
+  command: source /home/vagrant/.bashrc
+
+- name:  Install dependencies for UI via yarn
+  command: yarn install
+  args: 
+    chdir: /home/vagrant/Repositories/ChRIS_store_ui
+

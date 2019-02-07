@@ -18,75 +18,74 @@
       - mysql-server
       - httpie
       - python3-pip
-      - python-swiftclient
       - python3-requests
-      - pytz
       - python3-pytz
-      - python-swiftclient
+      - python3-swiftclient
       - python3-coverage
-      - mod_wsgi
-      - python-pudb
+      - python3-mod_wsgi
+      - python3-pudb
       - libcurl-devel
       - openssl-devel
       - gcc
+      - python3-pycurl
       state: present
 
-- name: pip install python-chrisstoreclient
+- name: pip3 install python-chrisstoreclient
   pip:
       name: python-chrisstoreclient
       executable: pip3
 
-- name: pip install django-filter
+- name: pip3 install django-filter
   pip:
       name: django-filter
       executable: pip3
 
-- name: pip install django-storage-swift
+- name: pip3 install django-storage-swift
   pip:
       name: django-storage-swift
       executable: pip3
 
-- name: pip install django-cors-middleware
+- name: pip3 install django-cors-middleware
   pip:
       name: django-cors-middleware
       executable: pip3
 
-- name: pip install django-djangorestframework
+- name: pip3 install django-djangorestframework
   pip:
       name: djangorestframework
       executable: pip3
 
-- name: pip install django-debug-toolbar
+- name: pip3 install django-debug-toolbar
   pip:
       name: django-debug-toolbar
       executable: pip3
 
-- name: pip install django-extensions
+- name: pip3 install django-extensions
   pip:
       name: django-extensions
       executable: pip3
 
-- name: pip install collection-json
+- name: pip3 install collection-json
   pip:
       name: collection-json
       executable: pip3
 
-- name: pip install pfurl
+- name: pip3 install pfurl
   pip:
       name: pfurl
       executable: pip3
 
-- name: pip install pfmisc
+- name: pip3 install pfmisc
   pip:
       name: pfmisc
       executable: pip3
 
-- name: pip install docker
+- name: pip3 install docker
   pip:
       name: docker
       executable: pip3
 
-- name: pip install mod-wsgi-httpd
+- name: pip3 install mod-wsgi-httpd
   pip:
       name: mod-wsgi-httpd
       executable: pip3

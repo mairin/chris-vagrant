@@ -35,8 +35,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # bootstrap and run with ansible
   config.vm.provision "shell", inline: "sudo dnf -y install python2-dnf libselinux-python"
   config.vm.provision "ansible" do |ansible|
+    ansible.playbook_command = "/usr/bin/ansible-playbook-3"
     ansible.verbose = "v"
     ansible.playbook = "playbook.yml"
+    ansible.extra_vars = { ansible_python_interpreter:"/usr/bin/python3" }
   end
 
   # Create the bodhi dev box

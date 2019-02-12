@@ -90,6 +90,16 @@
       name: mod-wsgi-httpd
       executable: pip3
 
+- name: pip3 install venv
+  pip:
+      name: virtualenv
+      executable: pip3
+
+- name: pip3 install venvwrapper
+  pip:
+      name: virtualenvwrapper
+      executable: pip3
+
 - name: Install the .vimrc
   copy:
       src: .vimrc
@@ -103,12 +113,6 @@
       src: motd
       dest: /etc/motd
       mode: 0644
-
-- name: Create directory for python env
-  file: 
-      path: /home/vagrant/Python_Envs 
-      state: directory
-      mode: 0755
 
 - name: Create directory for repos
   file: 
@@ -131,7 +135,8 @@
 - name: Install python virtual environment
   environment:
     PYCURL_SSL_LIBRARY: openssl
+    VIRTUALENVWRAPPER_PYTHON: /usr/bin/virtualenvwrapper-3.sh
   pip:
     requirements: /home/vagrant/Repositories/ChRIS_ultron_backEnd/requirements/local.txt
-    virtualenv: /home/vagrant/Python_Envs
+    virtualenv: /home/vagrant/chris_env
     virtualenv_command: /usr/bin/python3.6 -m venv

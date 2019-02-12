@@ -11,6 +11,5 @@ fi
 # User specific aliases and functions
 export WORKON_HOME=/home/vagrant/chris_env
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.6
-source /usr/bin/virtualenvwrapper-3.sh
 export PYCURL_SSL_LIBRARY=openssl
 PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/vagrant/.local/bin:/home/vagrant/bin:/home/vagrant/chris_env/bin"

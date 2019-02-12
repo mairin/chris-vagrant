@@ -28,6 +28,13 @@
       - openssl-devel
       - gcc
       - python3-pycurl
+      - make
+      - expat-devel
+      - libgcc
+      - redhat-rpm-config
+      - python3-devel
+      - python3-mysql
+      - community-mysql-devel
       state: present
 
 - name: pip3 install python-chrisstoreclient
@@ -135,7 +142,6 @@
 - name: Install python virtual environment
   environment:
     PYCURL_SSL_LIBRARY: openssl
-    VIRTUALENVWRAPPER_PYTHON: /usr/bin/virtualenvwrapper-3.sh
   pip:
     requirements: /home/vagrant/Repositories/ChRIS_ultron_backEnd/requirements/local.txt
     virtualenv: /home/vagrant/chris_env

@@ -1,4 +1,4 @@
-Welcome to the ChRIS Store development environment.
+Welcome to the vagrant ChRIS development environment.
 Here are some helpful commands:
 
 workon chris_web_env:	Starts the python venv for ChRIS store development.
